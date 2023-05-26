@@ -195,7 +195,7 @@ andUnauthenticatedHandler: (MXRestClientUnauthenticatedHandler)unauthenticatedHa
     self = [super init];
     if (self)
     {
-        apiPathPrefix = kMXAPIPrefixPathR0;
+        apiPathPrefix = kMXAPIPrefixPathV3;
         antivirusServerPathPrefix = kMXAntivirusAPIPrefixPathUnstable;
         contentPathPrefix = kMXContentPrefixPath;
         
@@ -4817,7 +4817,7 @@ andUnauthenticatedHandler: (MXRestClientUnauthenticatedHandler)unauthenticatedHa
                        success:(void (^)(MXKeysUploadResponse *keysUploadResponse))success
                        failure:(void (^)(NSError *error))failure
 {
-    NSString *path = deviceId ? [NSString stringWithFormat:@"%@/keys/upload/%@", kMXAPIPrefixPathV3, [deviceId stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]] : [NSString stringWithFormat:@"%@/keys/upload", kMXAPIPrefixPathR0];
+    NSString *path = deviceId ? [NSString stringWithFormat:@"%@/keys/upload/%@", kMXAPIPrefixPathV3, [deviceId stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]] : [NSString stringWithFormat:@"%@/keys/upload", kMXAPIPrefixPathV3];
 
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     if (deviceKeys)
@@ -5089,7 +5089,7 @@ andUnauthenticatedHandler: (MXRestClientUnauthenticatedHandler)unauthenticatedHa
                                    success:(void (^)(void))success
                                    failure:(void (^)(NSError *error))failure
 {
-    return [self updateKeyBackupVersion:keyBackupVersion withPath:kMXAPIPrefixPathR0 success:success failure:failure];
+    return [self updateKeyBackupVersion:keyBackupVersion withPath:kMXAPIPrefixPathV3 success:success failure:failure];
 }
 
 - (MXHTTPOperation*)updateKeyBackupVersion:(MXKeyBackupVersion*)keyBackupVersion
@@ -6266,7 +6266,7 @@ andUnauthenticatedHandler: (MXRestClientUnauthenticatedHandler)unauthenticatedHa
 - (MXHTTPOperation*)homeServerCapabilitiesWithSuccess:(void (^)(MXHomeserverCapabilities *capabilities))success
                                               failure:(void (^)(NSError *error))failure
 {
-    NSString *path = [NSString stringWithFormat:@"%@/capabilities", kMXAPIPrefixPathR0];
+    NSString *path = [NSString stringWithFormat:@"%@/capabilities", kMXAPIPrefixPathV3];
 
     MXWeakify(self);
     return [httpClient requestWithMethod:@"GET"
