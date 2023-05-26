@@ -1122,7 +1122,7 @@ andUnauthenticatedHandler: (MXRestClientUnauthenticatedHandler)unauthenticatedHa
 
     NSData *payloadData = [NSJSONSerialization dataWithJSONObject:jsonBodyParameters options:0 error:nil];
     return [httpClient requestWithMethod:@"POST"
-                                    path:[NSString stringWithFormat:@"%@/refresh", kMXAPIPrefixPathV1]
+                                    path:[NSString stringWithFormat:@"%@/refresh", kMXAPIPrefixPathV3]
                               parameters:nil
                      needsAuthentication:NO
                                     data:payloadData
